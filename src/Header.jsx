@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import logoRightAligned from "./assets/logo/RightAligned_SolidBlack_Tight.svg";
 import logoWordmark from "./assets/logo/Single_SolidBlack_Tight.svg";
 
 const navLinks = [
@@ -13,12 +14,28 @@ export default function Header() {
 
   return (
     <header className="relative z-50 border-b-[6px] border-black bg-white">
-      <div className="flex items-center justify-between gap-4 px-2 py-5 sm:px-3 md:px-5 lg:px-[30px]">
+      <div className="flex items-center justify-between gap-4 py-5 pl-6 pr-1 sm:pr-2 md:pr-4 lg:pr-7">
         <Link
           to="/"
+          aria-label="Alpine Earthworks home"
           className="shrink-0 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
         >
-          <img src={logoWordmark} alt="Alpine Earthworks" className="h-[20px] w-auto" width={384} height={20} />
+          <img
+            src={logoRightAligned}
+            alt=""
+            aria-hidden
+            className="h-9 w-auto md:hidden"
+            width={204}
+            height={45}
+          />
+          <img
+            src={logoWordmark}
+            alt=""
+            aria-hidden
+            className="hidden h-[20px] w-auto md:block"
+            width={384}
+            height={20}
+          />
         </Link>
 
         <div className="hidden items-center gap-6 lg:gap-8 md:flex">
@@ -57,7 +74,7 @@ export default function Header() {
         className={`border-t border-stone-200 bg-white md:hidden ${menuOpen ? "block" : "hidden"}`}
       >
         <nav
-          className="flex flex-col gap-1 px-2 py-4 sm:px-3 md:px-5 lg:px-[30px]"
+          className="flex flex-col gap-1 py-4 pl-6 pr-1 sm:pr-2 md:pr-4 lg:pr-7"
           aria-label="Mobile"
         >
           {navLinks.map(({ to, label }) => (
