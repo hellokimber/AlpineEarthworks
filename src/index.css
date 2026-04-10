@@ -23,8 +23,6 @@
   /* Display / sub ~4:1 (mockup); +50% from prior scale */
   --hero-heading-size: clamp(2.625rem, 3.3vw + 1.5rem, 5.625rem);
   --hero-sub-size: clamp(1.03125rem, 0.3vw + 0.87rem, 1.40625rem);
-  /* Hero text column inset; badge uses same value for bottom/right */
-  --hero-inline-padding: clamp(var(--page-gutter-mobile), 4.5vw + 0.75rem, 3.75rem);
   line-height: 1.5;
   font-weight: 400;
 }
@@ -32,7 +30,6 @@
 .hero-copy {
   display: flex;
   width: 100%;
-  max-width: min(42rem, 90%);
   flex-direction: column;
 }
 
@@ -58,21 +55,31 @@
 /* Gap above CTA below subheading; scales with sub size (3.6× = prior 3× +20%) */
 .hero-cta {
   margin-top: calc(3.6 * var(--hero-sub-size));
-  display: inline-flex;
-  width: fit-content;
+  display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   border: 2px solid #fff;
   background: transparent;
-  padding: 0.65em 1.5em;
-  font-size: clamp(0.625rem, 0.3vw + 0.48rem, 0.8125rem);
-  font-weight: 600;
+  /* Match QuoteForm submit (text-xs, px-8 py-3.5) below sm */
+  padding: 0.875rem 2rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
   transition:
     background-color 150ms ease,
     color 150ms ease;
+}
+
+@media (min-width: 640px) {
+  .hero-cta {
+    padding: 0.65em 1.5em;
+    font-size: clamp(0.625rem, 0.3vw + 0.48rem, 0.8125rem);
+    font-weight: 600;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
