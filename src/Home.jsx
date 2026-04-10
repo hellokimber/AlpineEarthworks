@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Pickaxe, Road, Tractor, Trees } from "lucide-react";
+import { ArrowRight, Pickaxe, Road, Shovel, Tractor, Trees } from "lucide-react";
 import { QuoteForm } from "./QuoteForm.jsx";
 import iconSolidBlack from "./assets/logo/Icon_SolidBlack_Tight.svg";
 import heroImage from "./assets/imgs/AlpineEarthworks_Hero.webp";
@@ -246,7 +246,7 @@ const servicesItems = [
   {
     title: "Excavation",
     description:
-      "Professional site preparation, grading, and earthmoving services for any project scale.",
+      "Professional site preparation, grading, and earthmoving services tailored for local homeowners, builders, and small business owners.",
     Icon: Pickaxe,
   },
   {
@@ -264,8 +264,14 @@ const servicesItems = [
   {
     title: "Landscaping",
     description:
-      "Custom landscape design and installation to enhance your property's beauty and value.",
+      "Professional sod installation and custom landscaping to enhance your property's beauty and value.",
     Icon: Trees,
+  },
+  {
+    title: "Clean fill removal",
+    description:
+      "Skip the Dirt Dump. We will remove, haul and dispose of your clean fill for you.",
+    Icon: Shovel,
   },
 ];
 
@@ -298,7 +304,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-[30px]">
+          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-12">
             <div className="hero-copy pb-[12.5cqh]">
               <h1 id="hero-heading" className="hero-heading text-left">
                 We treat your dirt
@@ -443,9 +449,10 @@ export default function Home() {
         className="scroll-mt-20 bg-white pb-8 pt-[calc(theme(spacing.8)*2/3)] sm:pb-12 sm:pt-8 md:pb-14 md:pt-[calc(theme(spacing.14)*2/3)]"
         aria-labelledby="contact-heading"
       >
-        <div className="bg-black pt-10 pb-8 pl-[var(--page-gutter-mobile)] pr-[var(--page-gutter-mobile)] text-white sm:pt-12 sm:pb-10 sm:pl-5 sm:pr-5 md:pt-14 md:pb-12 md:pl-8 md:pr-8 lg:pl-10 lg:pr-10">
-          <div className="grid grid-cols-1 gap-[calc(theme(spacing.10)*3/4)] lg:grid-cols-2 lg:gap-0 lg:items-start">
-            <div className="min-w-0 pl-0">
+        <div className="contact-section-gutter-desktop-only">
+          <div className="bg-black px-[var(--page-gutter-mobile)] pt-10 pb-8 text-white sm:px-5 sm:pt-12 sm:pb-10 md:px-8 md:pt-14 md:pb-12 lg:px-0">
+            <div className="grid grid-cols-1 gap-[calc(theme(spacing.10)*3/4)] lg:grid-cols-2 lg:gap-0 lg:items-start">
+              <div className="min-w-0 pl-0 lg:pl-[calc(theme(spacing.10)+theme(spacing.5))]">
                 <h2
                   id="contact-heading"
                   className="text-left font-[family-name:var(--font-display)] text-[clamp(1.875rem,3.25vw+1.125rem,3.75rem)] font-light leading-[1.12] tracking-[-0.02em] text-white"
@@ -499,6 +506,7 @@ export default function Home() {
                 <QuoteForm />
               </div>
             </div>
+          </div>
         </div>
       </section>
 

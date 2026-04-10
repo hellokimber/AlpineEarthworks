@@ -76,6 +76,8 @@
 
 @media (min-width: 640px) {
   .hero-cta {
+    width: auto;
+    align-self: flex-start;
     padding: 0.65em 1.5em;
     font-size: clamp(0.625rem, 0.3vw + 0.48rem, 0.8125rem);
     font-weight: 600;
@@ -150,6 +152,19 @@
 
 @media (min-width: 1024px) {
   .contact-section-gutter {
+    padding-left: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
+    padding-right: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
+  }
+}
+
+/* Contact / quote strip: edge-to-edge below lg; same horizontal inset as footer from lg up */
+.contact-section-gutter-desktop-only {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (min-width: 1024px) {
+  .contact-section-gutter-desktop-only {
     padding-left: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
     padding-right: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
   }

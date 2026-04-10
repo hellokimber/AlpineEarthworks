@@ -201,7 +201,7 @@ export function QuoteForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="flex w-full items-center justify-center gap-2 border-[2pt] border-transparent border-solid bg-stone-950 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:border-black hover:bg-transparent hover:text-stone-950 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-transparent disabled:hover:bg-stone-950 disabled:hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+          className="flex w-full items-center justify-center gap-2 border-[2pt] border-transparent border-solid bg-stone-950 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:border-black hover:bg-transparent hover:text-stone-950 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-transparent disabled:hover:bg-stone-950 disabled:hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:w-fit"
         >
           {status === "submitting" ? "Sending…" : "Send message"}
           <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
