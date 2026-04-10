@@ -304,7 +304,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-[30px]">
+          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-12">
             <div className="hero-copy pb-[12.5cqh]">
               <h1 id="hero-heading" className="hero-heading text-left">
                 We treat your dirt
@@ -452,7 +452,7 @@ export default function Home() {
         <div className="contact-section-gutter-desktop-only">
           <div className="bg-black px-[var(--page-gutter-mobile)] pt-10 pb-8 text-white sm:px-5 sm:pt-12 sm:pb-10 md:px-8 md:pt-14 md:pb-12 lg:px-0">
             <div className="grid grid-cols-1 gap-[calc(theme(spacing.10)*3/4)] lg:grid-cols-2 lg:gap-0 lg:items-start">
-              <div className="min-w-0 pl-0">
+              <div className="min-w-0 pl-0 lg:pl-[calc(theme(spacing.10)+theme(spacing.5))]">
                 <h2
                   id="contact-heading"
                   className="text-left font-[family-name:var(--font-display)] text-[clamp(1.875rem,3.25vw+1.125rem,3.75rem)] font-light leading-[1.12] tracking-[-0.02em] text-white"
