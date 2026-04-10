@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+/* Netlify: duplicate form must exist in built HTML for form detection */
+.netlify-form-register {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:root {
+  --font-sans: "brother-1816", "Georgia", ui-serif, serif;
+  --font-display: var(--font-sans);
+  /* ~8px → ~40px with viewport; aligns Services / About us headings */
+  --section-heading-shift: clamp(0.5rem, 0.5rem + 2vw, 2.5rem);
+  /* Display / sub ~4:1 (mockup); +50% from prior scale */
+  --hero-heading-size: clamp(2.625rem, 3.3vw + 1.5rem, 5.625rem);
+  --hero-sub-size: clamp(1.03125rem, 0.3vw + 0.87rem, 1.40625rem);
+  /* Hero text column inset; badge uses same value for bottom/right */
+  --hero-inline-padding: clamp(1rem, 4.5vw + 0.75rem, 3.75rem);
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.hero-copy {
+  display: flex;
+  width: 100%;
+  max-width: min(42rem, 90%);
+  flex-direction: column;
+}
+
+.hero-heading {
+  font-family: var(--font-display);
+  font-size: var(--hero-heading-size);
+  font-weight: 300;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.hero-subheading {
+  margin-top: 1.44em;
+  font-size: var(--hero-sub-size);
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+/* Gap above CTA below subheading; scales with sub size (3.6× = prior 3× +20%) */
+.hero-cta {
+  margin-top: calc(3.6 * var(--hero-sub-size));
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid #fff;
+  background: transparent;
+  padding: 0.65em 1.5em;
+  font-size: clamp(0.625rem, 0.3vw + 0.48rem, 0.8125rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  transition: background-color 150ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-cta {
+    transition: none;
+  }
+}
+
+.hero-cta:hover {
+  background-color: rgb(255 255 255 / 0.1);
+}
+
+.hero-cta:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+/* Hero photo — square badge frame */
+.hero-exp-badge {
+  border: 4px solid #000;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* Icon watermark — contain + vw translate (cover+height:100% hid the mark in some engines) */
+.services-watermark {
+  display: block;
+  width: min(420vw, 360rem);
+  max-width: none;
+  height: auto;
+  max-height: min(92vh, 156rem);
+  opacity: 0.03;
+  object-fit: contain;
+  object-position: left bottom;
+  transform-origin: left bottom;
+  /* Nudge down so the A’s feet sit on the section bottom; viewBox has padding below the glyph */
+  transform: translate(-10vw, 3.25%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
