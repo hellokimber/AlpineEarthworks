@@ -16,13 +16,15 @@
 :root {
   --font-sans: "brother-1816", "Georgia", ui-serif, serif;
   --font-display: var(--font-sans);
-  /* ~8px → ~40px with viewport; aligns Services / About us headings */
+  /* Horizontal page gutter below sm (~28px ≈ Tailwind spacing-7) */
+  --page-gutter-mobile: 1.75rem;
+  /* ~8px → ~40px with viewport; aligns Services / About us headings (sm+) */
   --section-heading-shift: clamp(0.5rem, 0.5rem + 2vw, 2.5rem);
   /* Display / sub ~4:1 (mockup); +50% from prior scale */
   --hero-heading-size: clamp(2.625rem, 3.3vw + 1.5rem, 5.625rem);
   --hero-sub-size: clamp(1.03125rem, 0.3vw + 0.87rem, 1.40625rem);
   /* Hero text column inset; badge uses same value for bottom/right */
-  --hero-inline-padding: clamp(1rem, 4.5vw + 0.75rem, 3.75rem);
+  --hero-inline-padding: clamp(var(--page-gutter-mobile), 4.5vw + 0.75rem, 3.75rem);
   line-height: 1.5;
   font-weight: 400;
 }
@@ -112,29 +114,37 @@
 }
 
 /* Quote block: horizontal inset halfway between current px-* and Services (max-w-7xl) content edge */
+/* Use 100% (containing block) instead of 100vw so padding never exceeds layout width. */
 .contact-section-gutter {
-  padding-left: calc(0.5rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
-  padding-right: calc(0.5rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
+  padding-left: calc(0.5rem + max(0px, (100% - min(100%, 80rem)) / 4));
+  padding-right: calc(0.5rem + max(0px, (100% - min(100%, 80rem)) / 4));
+}
+
+@media (max-width: 639.98px) {
+  .contact-section-gutter {
+    padding-left: calc(var(--page-gutter-mobile) + max(0px, (100% - min(100%, 80rem)) / 4));
+    padding-right: calc(var(--page-gutter-mobile) + max(0px, (100% - min(100%, 80rem)) / 4));
+  }
 }
 
 @media (min-width: 640px) {
   .contact-section-gutter {
-    padding-left: calc(0.75rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
-    padding-right: calc(0.75rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
+    padding-left: calc(0.75rem + max(0px, (100% - min(100%, 80rem)) / 4));
+    padding-right: calc(0.75rem + max(0px, (100% - min(100%, 80rem)) / 4));
   }
 }
 
 @media (min-width: 768px) {
   .contact-section-gutter {
-    padding-left: calc(1.25rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
-    padding-right: calc(1.25rem + max(0px, (100vw - min(100vw, 80rem)) / 4));
+    padding-left: calc(1.25rem + max(0px, (100% - min(100%, 80rem)) / 4));
+    padding-right: calc(1.25rem + max(0px, (100% - min(100%, 80rem)) / 4));
   }
 }
 
 @media (min-width: 1024px) {
   .contact-section-gutter {
-    padding-left: calc(30px + max(0px, (100vw - min(100vw, 80rem)) / 4));
-    padding-right: calc(30px + max(0px, (100vw - min(100vw, 80rem)) / 4));
+    padding-left: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
+    padding-right: calc(30px + max(0px, (100% - min(100%, 80rem)) / 4));
   }
 }
 
@@ -144,12 +154,15 @@
 
 html {
   scroll-behavior: smooth;
+  /* Avoid horizontal scroll from 100vw vs. layout width (scrollbar / subpixel). */
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
 
 /* Selected works: hide native scrollbar; scroll via arrows / touch */

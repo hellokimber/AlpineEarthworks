@@ -184,10 +184,10 @@ function SelectedWorksCarousel({ items }) {
 
   return (
     <>
-      <div className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 overflow-x-hidden">
+      <div className="max-w-full overflow-x-hidden">
         <ul
           ref={scrollRef}
-          className={`works-scroll mt-6 flex cursor-grab select-none gap-2 overflow-x-auto pb-1 pl-[calc((100vw-min(100vw,80rem))/2+0.5rem)] [-webkit-overflow-scrolling:touch] sm:mt-8 sm:gap-3 sm:pl-[calc((100vw-min(100vw,80rem))/2+0.75rem)] md:pl-[calc((100vw-min(100vw,80rem))/2+1.25rem)] lg:pl-[calc((100vw-min(100vw,80rem))/2+30px)] ${grabbing ? "cursor-grabbing" : ""}`}
+          className={`works-scroll mt-6 flex w-full cursor-grab select-none gap-2 overflow-x-auto pb-1 pl-[calc((100%-min(100%,80rem))/2+var(--page-gutter-mobile))] [-webkit-overflow-scrolling:touch] sm:mt-8 sm:gap-3 sm:pl-[calc((100%-min(100%,80rem))/2+0.75rem)] md:pl-[calc((100%-min(100%,80rem))/2+1.25rem)] lg:pl-[calc((100%-min(100%,80rem))/2+30px)] ${grabbing ? "cursor-grabbing" : ""}`}
           onPointerDown={onWorksPointerDown}
           onPointerMove={onWorksPointerMove}
           onPointerUp={onWorksPointerUp}
@@ -196,7 +196,7 @@ function SelectedWorksCarousel({ items }) {
           {items.map(({ src, alt, width: imgW, height: imgH }) => (
             <li
               key={alt}
-              className="flex h-[calc(min(78vw,17.5rem)*4/3*1.3)] shrink-0 items-center"
+              className="flex h-[calc(min(78vw,17.5rem)*4/3*1.3*0.5)] shrink-0 items-center sm:h-[calc(min(78vw,17.5rem)*4/3*1.3)]"
             >
               <img
                 src={src}
@@ -213,7 +213,7 @@ function SelectedWorksCarousel({ items }) {
         </ul>
       </div>
 
-      <div className="mx-auto mt-6 flex max-w-7xl items-center justify-between px-2 sm:mt-8 sm:px-3 md:px-5 lg:px-[30px]">
+      <div className="mx-auto mt-6 flex max-w-7xl items-center justify-between px-[var(--page-gutter-mobile)] sm:mt-8 sm:px-3 md:px-5 lg:px-[30px]">
         <button
           type="button"
           className={`${arrowBtnClass} ${showPrev ? "" : "invisible pointer-events-none"}`}
@@ -271,7 +271,7 @@ const servicesItems = [
 
 export default function Home() {
   return (
-    <main className="flex-1">
+    <main className="min-w-0 flex-1">
       <section aria-labelledby="hero-heading">
         <div className="grid min-h-0 grid-cols-1 md:grid-cols-2 md:min-h-[70vh]">
           <div className="relative order-1 min-h-[45vh] md:order-2 md:min-h-full md:border-l-[6px] md:border-white">
@@ -286,7 +286,7 @@ export default function Home() {
                 decoding="async"
               />
             </div>
-            <div className="hero-exp-badge absolute z-10 inline-flex aspect-square w-fit max-w-[min(100%,calc(100vw-2rem))] flex-col items-center justify-center gap-[3px] p-[15px] sm:gap-1 [bottom:var(--hero-inline-padding)] [right:var(--hero-inline-padding)]">
+            <div className="hero-exp-badge absolute z-10 inline-flex aspect-square w-fit max-w-[min(100%,calc(100%-2rem))] flex-col items-center justify-center gap-[3px] p-[15px] sm:gap-1 [bottom:var(--hero-inline-padding)] [right:var(--hero-inline-padding)]">
               <p className="font-[family-name:var(--font-display)] text-4xl font-black leading-none text-black sm:text-5xl">
                 35+
               </p>
@@ -298,9 +298,9 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black pt-0 pr-2 pl-[var(--hero-inline-padding)] [container-type:size] sm:pr-3 md:order-1 md:min-h-[70vh] md:pr-5 lg:pr-[30px]">
+          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black pt-0 pr-[var(--page-gutter-mobile)] pl-[var(--hero-inline-padding)] [container-type:size] sm:pr-3 md:order-1 md:min-h-[70vh] md:pr-5 lg:pr-[30px]">
             <div className="hero-copy pb-[12.5cqh]">
-              <h1 id="hero-heading" className="hero-heading">
+              <h1 id="hero-heading" className="hero-heading text-left">
                 We treat your dirt
                 <br />
                 like it’s our own
@@ -333,21 +333,21 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-2 sm:px-3 md:px-5 lg:px-[30px]">
-          <div className="flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-x-0 lg:gap-y-12 lg:items-stretch xl:gap-y-14">
+        <div className="relative z-10 mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:px-3 md:px-5 lg:px-[30px]">
+          <div className="flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-x-0 lg:gap-y-8 lg:items-stretch xl:gap-y-[calc(theme(spacing.14)*2/3)]">
             <div>
               <h2
                 id="services-heading"
-                className="-ml-[var(--section-heading-shift)] font-[family-name:var(--font-display)] text-[clamp(3rem,2vw+2.5rem,3.75rem)] font-extrabold uppercase leading-[0.95] tracking-[0.108em] text-stone-950 sm:tracking-[0.12em]"
+                className="-ml-[var(--section-heading-shift)] max-sm:ml-0 text-left font-[family-name:var(--font-display)] text-[clamp(1.875rem,3.25vw+1.125rem,3.75rem)] font-extrabold uppercase leading-[0.95] tracking-[0.108em] text-stone-950 sm:tracking-[0.12em]"
               >
                 Services
               </h2>
             </div>
             <div className="hidden min-h-0 lg:block" aria-hidden />
-            <ul className="m-0 flex list-none flex-col gap-12 p-0 sm:gap-14 lg:contents">
+            <ul className="m-0 flex list-none flex-col gap-8 p-0 sm:gap-[calc(theme(spacing.14)*2/3)] lg:contents">
               {servicesItems.map(({ title, description, Icon }) => (
                 <li key={title} className="flex gap-6 sm:gap-8 lg:contents">
-                  <div className="flex h-full min-h-0 shrink-0 justify-start self-stretch lg:justify-end">
+                  <div className="hidden h-full min-h-0 shrink-0 justify-start self-stretch sm:flex lg:justify-end">
                     <div
                       className="flex aspect-square h-full min-h-16 w-auto shrink-0 items-center justify-center rounded-lg border-2 border-stone-950 text-stone-950 sm:min-h-[4.5rem]"
                       aria-hidden
@@ -356,10 +356,12 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="min-w-0 lg:pl-6 xl:pl-8">
-                    <h3 className="font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase tracking-[0.108em] text-stone-950">
+                    <h3 className="text-left font-[family-name:var(--font-display)] text-lg font-extrabold uppercase leading-[1.2] tracking-[0.108em] text-stone-950 sm:text-xl md:text-2xl">
                       {title}
                     </h3>
-                    <p className="mt-2 text-xl leading-[1.3] text-stone-700">{description}</p>
+                    <p className="mt-2 text-base leading-relaxed text-stone-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]">
+                      {description}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -369,17 +371,17 @@ export default function Home() {
       </section>
 
       <section
-        className="bg-black py-12 text-center text-white sm:py-14 md:py-16"
+        className="bg-black py-12 text-white max-sm:text-left sm:text-center sm:py-14 md:py-16"
         aria-labelledby="servicing-heading"
       >
-        <div className="mx-auto max-w-4xl px-2 sm:px-3 lg:px-4">
+        <div className="mx-auto max-w-4xl px-[var(--page-gutter-mobile)] sm:px-3 lg:px-4">
           <h2
             id="servicing-heading"
-            className="font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase tracking-[0.108em] text-white"
+            className="text-left font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase tracking-[0.108em] text-white sm:text-center"
           >
             Servicing
           </h2>
-          <p className="mt-2 text-xl leading-[1.3] text-white">
+          <p className="mt-2 text-left text-xl leading-[1.3] text-white sm:text-center">
             Okotoks, High River, Foothills County, Priddis & South Calgary
           </p>
         </div>
@@ -387,15 +389,15 @@ export default function Home() {
 
       <section
         id="about"
-        className="scroll-mt-20 bg-white pb-16 pt-24 text-stone-950 sm:pb-24 sm:pt-32 md:pb-28 md:pt-36"
+        className="scroll-mt-20 bg-white pb-16 pt-18 text-stone-950 sm:pb-24 sm:pt-24 md:pb-28 md:pt-27"
         aria-labelledby="about-heading"
       >
-        <div className="mx-auto max-w-7xl px-2 sm:px-3 md:px-5 lg:px-[30px]">
+        <div className="mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:px-3 md:px-5 lg:px-[30px]">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-12 xl:gap-16">
             <div className="relative order-1 min-h-0">
               <h2
                 id="about-heading"
-                className="pointer-events-none absolute top-0 left-[calc(-1*var(--section-heading-shift))] z-10 max-w-none -translate-y-[42%] font-[family-name:var(--font-display)] text-[clamp(3rem,2vw+2.5rem,3.75rem)] font-extrabold uppercase leading-[0.95] tracking-[0.108em] text-stone-950 sm:-translate-y-[38%] sm:tracking-[0.12em]"
+                className="pointer-events-none absolute top-0 left-0 z-10 max-w-none -translate-y-[42%] text-left font-[family-name:var(--font-display)] text-[clamp(1.875rem,3.25vw+1.125rem,3.75rem)] font-extrabold uppercase leading-[0.95] tracking-[0.108em] text-stone-950 sm:left-[calc(-1*var(--section-heading-shift))] sm:-translate-y-[38%] sm:tracking-[0.12em]"
               >
                 About us
               </h2>
@@ -412,15 +414,15 @@ export default function Home() {
             </div>
 
             <div className="order-2 flex min-h-0 flex-col justify-center">
-              <p className="font-[family-name:var(--font-display)] text-3xl font-light leading-snug text-stone-950">
+              <p className="font-[family-name:var(--font-display)] text-xl font-light leading-snug text-stone-950 md:text-2xl">
                 We are a small, local crew based right here in the Alberta Foothills.
               </p>
-              <p className="mt-6 text-lg leading-relaxed text-stone-700">
+              <p className="mt-4 text-base leading-relaxed text-stone-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]">
                 As a family-run company with over 35 years of combined experience, we believe in honest work,
                 clear communication, and building real relationships with our clients. We show up on time, work
                 hard, and take pride in doing the job right: no shortcuts, no surprises.
               </p>
-              <p className="mt-4 text-lg leading-relaxed text-stone-700">
+              <p className="mt-4 text-base leading-relaxed text-stone-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]">
                 If you&apos;re looking for a reliable team who cares as much about your property as you do,
                 let&apos;s chat. We&apos;d love to help bring your outdoor vision to life.
               </p>
@@ -440,20 +442,19 @@ export default function Home() {
         className="scroll-mt-20 bg-white pb-8 pt-[calc(theme(spacing.8)*2/3)] sm:pb-12 sm:pt-8 md:pb-14 md:pt-[calc(theme(spacing.14)*2/3)]"
         aria-labelledby="contact-heading"
       >
-        <div className="contact-section-gutter">
-          <div className="bg-black pt-10 pb-8 pl-4 pr-0 text-white sm:pt-12 sm:pb-10 sm:pl-5 md:pt-14 md:pb-12 md:pl-8 lg:pl-10">
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16 lg:items-start">
-              <div className="min-w-0 pl-5">
+        <div className="bg-black pt-10 pb-8 pl-[var(--page-gutter-mobile)] pr-[var(--page-gutter-mobile)] text-white sm:pt-12 sm:pb-10 sm:pl-5 sm:pr-5 md:pt-14 md:pb-12 md:pl-8 md:pr-8 lg:pl-10 lg:pr-10">
+          <div className="grid grid-cols-1 gap-[calc(theme(spacing.10)*3/4)] lg:grid-cols-2 lg:gap-0 lg:items-start">
+            <div className="min-w-0 pl-0">
                 <h2
                   id="contact-heading"
-                  className="font-[family-name:var(--font-display)] text-[clamp(3.575rem,2.86vw+2.6rem,4.875rem)] font-light leading-[1.12] tracking-[-0.02em] text-white"
+                  className="text-left font-[family-name:var(--font-display)] text-[clamp(1.875rem,3.25vw+1.125rem,3.75rem)] font-light leading-[1.12] tracking-[-0.02em] text-white"
                 >
                   Let&apos;s get digging
                 </h2>
-                <p className="mt-5 max-w-md text-lg font-light leading-[1.45] text-white lg:max-w-none">
+                <p className="mt-[calc(theme(spacing.5)*3/4)] max-w-md text-lg font-light leading-[1.45] text-white lg:max-w-none">
                   Contact us today for a free consultation and quote.
                 </p>
-                <dl className="mt-20 space-y-9 sm:mt-24 sm:space-y-10">
+                <dl className="mt-[calc(theme(spacing.20)*3/4)] space-y-[calc(theme(spacing.9)*3/4)] sm:mt-[calc(theme(spacing.24)*3/4)] sm:space-y-[calc(theme(spacing.10)*3/4)]">
                   <div>
                     <dt className="text-[0.8125rem] font-bold uppercase tracking-[0.12em] text-stone-400 sm:text-sm">
                       Phone
@@ -492,12 +493,11 @@ export default function Home() {
               </div>
               <div
                 id="quote"
-                className="flex min-h-0 min-w-0 w-full scroll-mt-20 flex-col border-r-4 border-black bg-white px-[calc(theme(spacing.4)+theme(spacing.5))] py-[2.75rem] text-black shadow-sm sm:px-[calc(theme(spacing.5)+theme(spacing.5))] md:px-[calc(theme(spacing.8)+theme(spacing.5))] lg:px-[calc(theme(spacing.10)+theme(spacing.5))]"
+                className="mx-0 flex min-h-0 min-w-0 w-full scroll-mt-20 flex-col border-x-4 border-black bg-white px-[var(--page-gutter-mobile)] py-[2.75rem] text-black shadow-sm sm:px-[calc(theme(spacing.5)+theme(spacing.5))] md:px-[calc(theme(spacing.8)+theme(spacing.5))] lg:px-[calc(theme(spacing.10)+theme(spacing.5))]"
               >
                 <QuoteForm />
               </div>
             </div>
-          </div>
         </div>
       </section>
 
@@ -506,12 +506,12 @@ export default function Home() {
         className="scroll-mt-20 bg-white pb-36 pt-14 text-stone-950 sm:pb-40 sm:pt-16 md:pb-44 md:pt-20"
         aria-labelledby="works-heading"
       >
-        <div className="mx-auto max-w-7xl px-2 sm:px-3 md:px-5 lg:px-[30px]">
+        <div className="mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:px-3 md:px-5 lg:px-[30px]">
           <h2
             id="works-heading"
-            className="-ml-[var(--section-heading-shift)] font-[family-name:var(--font-display)] text-base font-extrabold uppercase leading-none tracking-[0.108em] text-stone-950 sm:text-lg sm:tracking-[0.12em]"
+            className="-ml-[var(--section-heading-shift)] max-sm:ml-0 text-left font-[family-name:var(--font-display)] text-base font-extrabold uppercase leading-none tracking-[0.108em] text-stone-950 sm:text-lg sm:tracking-[0.12em]"
           >
-            Selected works / 2022–2025
+            Selected works
           </h2>
         </div>
 
