@@ -10,7 +10,7 @@ const empty = {
 };
 
 const inputClass =
-  "w-full border border-black bg-white px-3 py-2.5 text-sm text-black placeholder:text-stone-400 focus:outline focus:outline-2 focus:outline-offset-0 focus:outline-black";
+  "w-full border border-black bg-white px-3 py-2.5 text-base leading-relaxed text-stone-700 placeholder:text-stone-400 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3] focus:outline focus:outline-2 focus:outline-offset-0 focus:outline-black";
 
 const labelClass =
   "block text-xs font-bold uppercase tracking-[0.12em] text-black";
@@ -62,10 +62,12 @@ export function QuoteForm() {
   if (status === "success") {
     return (
       <div className="text-center">
-        <p className="text-lg font-medium text-black">Thanks — we&apos;ll be in touch shortly.</p>
+        <p className="text-base font-medium leading-relaxed text-stone-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]">
+          Thanks — we&apos;ll be in touch shortly.
+        </p>
         <button
           type="button"
-          className="mt-6 text-sm font-bold uppercase tracking-wide text-black underline decoration-black underline-offset-4 transition-colors duration-150 hover:text-stone-600 hover:decoration-stone-600 hover:decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+          className="mt-4 text-sm font-bold uppercase tracking-wide text-stone-950 underline decoration-stone-950 underline-offset-4 transition-colors duration-150 hover:text-stone-600 hover:decoration-stone-600 hover:decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
           onClick={() => setStatus("idle")}
         >
           Send another message
@@ -79,7 +81,7 @@ export function QuoteForm() {
       name="quote"
       method="POST"
       onSubmit={handleSubmit}
-      className="flex flex-col gap-8"
+      className="flex flex-col gap-5"
       noValidate
     >
       <p className="sr-only">
@@ -107,7 +109,7 @@ export function QuoteForm() {
           maxLength={120}
           autoComplete="name"
           placeholder="your full name"
-          className={`mt-2 ${inputClass}`}
+          className={`mt-1.5 ${inputClass}`}
           value={values.name}
           onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
           aria-invalid={fieldErrors.name ? true : undefined}
@@ -132,7 +134,7 @@ export function QuoteForm() {
           maxLength={254}
           autoComplete="email"
           placeholder="your@email.com"
-          className={`mt-2 ${inputClass}`}
+          className={`mt-1.5 ${inputClass}`}
           value={values.email}
           onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
           aria-invalid={fieldErrors.email ? true : undefined}
@@ -156,7 +158,7 @@ export function QuoteForm() {
           maxLength={40}
           autoComplete="tel"
           placeholder="403 000 0000"
-          className={`mt-2 ${inputClass}`}
+          className={`mt-1.5 ${inputClass}`}
           value={values.phone}
           onChange={(e) => setValues((v) => ({ ...v, phone: e.target.value }))}
         />
@@ -173,7 +175,7 @@ export function QuoteForm() {
           rows={5}
           maxLength={4000}
           placeholder="Tell us about your project..."
-          className={`mt-2 resize-y ${inputClass}`}
+          className={`mt-1.5 resize-y ${inputClass}`}
           value={values.details}
           onChange={(e) => setValues((v) => ({ ...v, details: e.target.value }))}
           aria-invalid={fieldErrors.details ? true : undefined}
@@ -187,7 +189,10 @@ export function QuoteForm() {
       </div>
 
       {status === "error" ? (
-        <p className="text-sm text-red-700" role="alert">
+        <p
+          className="text-base leading-relaxed text-red-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]"
+          role="alert"
+        >
           Something went wrong. Please try again or call us directly.
         </p>
       ) : null}

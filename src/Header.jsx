@@ -14,7 +14,7 @@ export default function Header() {
 
   return (
     <header className="relative z-50 border-b-[6px] border-black bg-white">
-      <div className="flex items-center justify-between gap-4 py-5 pl-6 pr-1 sm:pr-2 md:pr-4 lg:pr-7">
+      <div className="flex items-center justify-between gap-4 py-5 pl-[var(--page-gutter-mobile)] pr-1 sm:pl-6 sm:pr-2 md:pr-4 lg:pr-7">
         <Link
           to="/"
           aria-label="Alpine Earthworks home"
@@ -74,7 +74,7 @@ export default function Header() {
         className={`border-t border-stone-200 bg-white md:hidden ${menuOpen ? "block" : "hidden"}`}
       >
         <nav
-          className="flex flex-col gap-1 py-4 pl-6 pr-1 sm:pr-2 md:pr-4 lg:pr-7"
+          className="flex flex-col gap-1 py-4 pl-[var(--page-gutter-mobile)] pr-1 sm:pl-6 sm:pr-2 md:pr-4 lg:pr-7"
           aria-label="Mobile"
         >
           {navLinks.map(({ to, label }) => (
