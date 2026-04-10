@@ -286,7 +286,7 @@ export default function Home() {
                 decoding="async"
               />
             </div>
-            <div className="hero-exp-badge absolute z-10 inline-flex aspect-square w-fit max-w-[min(100%,calc(100%-2rem))] flex-col items-center justify-center gap-[3px] p-[15px] sm:gap-1 [bottom:var(--hero-inline-padding)] [right:var(--hero-inline-padding)]">
+            <div className="hero-exp-badge absolute z-10 inline-flex aspect-square w-fit max-w-[min(100%,calc(100%-2rem))] flex-col items-center justify-center gap-[3px] p-[15px] sm:gap-1 bottom-[var(--page-gutter-mobile)] right-[var(--page-gutter-mobile)] sm:bottom-3 sm:right-3 md:bottom-5 md:right-5 lg:bottom-[30px] lg:right-[30px]">
               <p className="font-[family-name:var(--font-display)] text-4xl font-black leading-none text-black sm:text-5xl">
                 35+
               </p>
@@ -298,17 +298,18 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black pt-0 pr-[var(--page-gutter-mobile)] pl-[var(--hero-inline-padding)] [container-type:size] sm:pr-3 md:order-1 md:min-h-[70vh] md:pr-5 lg:pr-[30px]">
+          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-[30px]">
             <div className="hero-copy pb-[12.5cqh]">
               <h1 id="hero-heading" className="hero-heading text-left">
                 We treat your dirt
-                <br />
+                <span className="sm:hidden"> </span>
+                <br className="hidden sm:block" />
                 like it’s our own
               </h1>
               <p className="hero-subheading">Excavation / Landscaping / Grading</p>
               <Link to="/#quote" className="hero-cta">
                 Get a quote
-                <ArrowRight className="h-[1em] w-[1em] shrink-0" strokeWidth={2} aria-hidden />
+                <ArrowRight className="h-4 w-4 shrink-0 sm:h-[1em] sm:w-[1em]" strokeWidth={2} aria-hidden />
               </Link>
             </div>
           </div>
