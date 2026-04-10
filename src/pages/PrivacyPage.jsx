@@ -15,7 +15,7 @@ export default function PrivacyPage() {
           If you have questions in the meantime, please contact us at{" "}
           <a
             href="mailto:jordan@alpineearthworks.ca"
-            className="font-semibold text-stone-950 underline decoration-stone-950 underline-offset-2 transition hover:opacity-70"
+            className="font-semibold text-stone-950 underline decoration-stone-950 underline-offset-2 transition-colors duration-150 hover:text-stone-600 hover:decoration-stone-600 hover:decoration-2"
           >
             jordan@alpineearthworks.ca
           </a>
@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         <p className="mt-10">
           <Link
             to="/"
-            className="text-sm font-semibold uppercase tracking-wide text-stone-950 underline decoration-stone-950 decoration-1 underline-offset-[0.2em] transition hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stone-950 sm:text-base"
+            className="text-sm font-semibold uppercase tracking-wide text-stone-950 underline decoration-stone-950 decoration-1 underline-offset-[0.2em] transition-colors duration-150 hover:text-stone-600 hover:decoration-stone-600 hover:decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-stone-950 sm:text-base"
           >
             Back to home
           </Link>

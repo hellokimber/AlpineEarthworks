@@ -27,15 +27,15 @@ export default function Header() {
               <Link
                 key={to}
                 to={to}
-                className="text-xs font-semibold uppercase tracking-wide text-stone-950 transition hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:text-sm"
+                className="text-xs font-semibold uppercase tracking-wide text-stone-950 transition-colors duration-150 hover:text-stone-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:text-sm"
               >
                 {label}
               </Link>
             ))}
           </nav>
           <Link
-            to="/#contact"
-            className="inline-flex shrink-0 items-center justify-center bg-stone-950 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-stone-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:text-sm"
+            to="/#quote"
+            className="inline-flex shrink-0 items-center justify-center border-[2pt] border-transparent border-solid bg-stone-950 px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:border-black hover:bg-transparent hover:text-stone-950 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900 sm:text-sm"
           >
             Get a quote
           </Link>
@@ -43,7 +43,7 @@ export default function Header() {
 
         <button
           type="button"
-          className="min-w-[4.5rem] rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-wide text-stone-950 md:hidden hover:bg-stone-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+          className="min-w-[4.5rem] rounded-md px-2 py-2 text-xs font-semibold uppercase tracking-wide text-stone-950 transition-colors duration-150 md:hidden hover:bg-stone-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
           onClick={() => setMenuOpen((o) => !o)}
           aria-expanded={menuOpen}
           aria-controls="mobile-menu"
@@ -64,15 +64,15 @@ export default function Header() {
             <Link
               key={to}
               to={to}
-              className="rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-wide text-stone-950 hover:bg-stone-100"
+              className="rounded-md px-3 py-3 text-sm font-semibold uppercase tracking-wide text-stone-950 transition-colors duration-150 hover:bg-stone-200 hover:text-stone-700"
               onClick={() => setMenuOpen(false)}
             >
               {label}
             </Link>
           ))}
           <Link
-            to="/#contact"
-            className="mt-2 bg-stone-950 px-3 py-3 text-center text-sm font-semibold uppercase tracking-wide text-white hover:bg-stone-800"
+            to="/#quote"
+            className="mt-2 border-[2pt] border-transparent border-solid bg-stone-950 px-3 py-3 text-center text-sm font-semibold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:border-black hover:bg-transparent hover:text-stone-950"
             onClick={() => setMenuOpen(false)}
           >
             Get a quote

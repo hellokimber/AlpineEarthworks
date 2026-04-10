@@ -65,7 +65,7 @@ export function QuoteForm() {
         <p className="text-lg font-medium text-black">Thanks — we&apos;ll be in touch shortly.</p>
         <button
           type="button"
-          className="mt-6 text-sm font-bold uppercase tracking-wide text-black underline decoration-black underline-offset-4 hover:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+          className="mt-6 text-sm font-bold uppercase tracking-wide text-black underline decoration-black underline-offset-4 transition-colors duration-150 hover:text-stone-600 hover:decoration-stone-600 hover:decoration-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
           onClick={() => setStatus("idle")}
         >
           Send another message
@@ -196,7 +196,7 @@ export function QuoteForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex items-center gap-2 bg-black px-8 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-stone-800 disabled:cursor-not-allowed disabled:opacity-60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+          className="inline-flex items-center gap-2 border-[2pt] border-transparent border-solid bg-stone-950 px-8 py-3.5 text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:border-black hover:bg-transparent hover:text-stone-950 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:border-transparent disabled:hover:bg-stone-950 disabled:hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
         >
           {status === "submitting" ? "Sending…" : "Send message"}
           <ArrowRight className="h-4 w-4 shrink-0" strokeWidth={2} aria-hidden />
