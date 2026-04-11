@@ -380,12 +380,9 @@ export default function Home() {
           </div>
 
           <div className="order-2 flex min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 sm:px-3 md:order-1 md:h-full md:min-h-[70vh] md:[container-type:size] md:px-5 lg:px-12">
-            <div className="hero-copy max-md:pt-6 pb-9 md:pb-[12.5cqh]">
+            <div className="hero-copy max-md:pt-[calc(theme(spacing.6)*2/3)] pb-9 md:pb-[12.5cqh]">
               <h1 id="hero-heading" className="hero-heading text-left">
-                We treat your dirt
-                <span className="sm:hidden"> </span>
-                <br className="hidden sm:block" />
-                like it’s our own
+                We treat your dirt like it’s our own
               </h1>
               <p className="hero-subheading">Excavation / Landscaping / Grading</p>
               <Link to="/#quote" className="hero-cta">
