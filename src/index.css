@@ -201,3 +201,12 @@ body {
 .works-scroll::-webkit-scrollbar {
   display: none;
 }
+
+/* Header: menu left / logo right + even gutters so the Menu control is not clipped in mobile landscape */
+@media (max-width: 767.98px) and (orientation: landscape) {
+  .header-bar-mobile-landscape {
+    flex-direction: row-reverse;
+    padding-left: var(--page-gutter-mobile);
+    padding-right: var(--page-gutter-mobile);
+  }
+}
