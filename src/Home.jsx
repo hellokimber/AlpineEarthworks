@@ -275,11 +275,86 @@ const servicesItems = [
   },
 ];
 
+function pickBox(el) {
+  if (!el) return null;
+  const r = el.getBoundingClientRect();
+  const cs = getComputedStyle(el);
+  return {
+    offsetH: el.offsetHeight,
+    clientH: el.clientHeight,
+    scrollH: el.scrollHeight,
+    top: Math.round(r.top * 10) / 10,
+    bottom: Math.round(r.bottom * 10) / 10,
+    minH: cs.minHeight,
+    height: cs.height,
+    containerType: cs.containerType,
+    paddingBottom: cs.paddingBottom,
+  };
+}
+
 export default function Home() {
+  const heroGridRef = useRef(null);
+
+  useEffect(() => {
+    // #region agent log
+    const send = (hypothesisId, message, data) => {
+      fetch("http://127.0.0.1:7928/ingest/52aa98b2-e9fb-4ef5-a7a4-0944eab292c1", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-Debug-Session-Id": "c89d76" },
+        body: JSON.stringify({
+          sessionId: "c89d76",
+          runId: "post-fix-2",
+          hypothesisId,
+          location: "Home.jsx:heroLayout",
+          message,
+          data,
+          timestamp: Date.now(),
+        }),
+      }).catch(() => {});
+    };
+    const measure = () => {
+      const grid = heroGridRef.current;
+      if (!grid || typeof window === "undefined") return;
+      const [imgCol, copyCol] = grid.children;
+      const heroCopy = copyCol?.querySelector?.(".hero-copy") ?? null;
+      const h1 = copyCol?.querySelector?.("#hero-heading") ?? null;
+      const imgBox = pickBox(imgCol);
+      const copyBox = pickBox(copyCol);
+      const h1Box = pickBox(h1);
+      const heroCopyBox = pickBox(heroCopy);
+      const textTopUnderImageBottom =
+        imgBox && h1Box ? h1Box.top < imgBox.bottom - 0.5 : null;
+      send("H1-H5", "hero layout snapshot", {
+        innerH: window.innerHeight,
+        innerW: window.innerWidth,
+        grid: pickBox(grid),
+        imgCol: imgBox,
+        copyCol: copyBox,
+        heroCopy: heroCopyBox,
+        h1: h1Box,
+        textTopUnderImageBottom,
+        copyColScrollOverflow: copyBox ? copyBox.scrollH > copyBox.clientH + 1 : null,
+        overlapPx: imgBox && h1Box ? Math.round((imgBox.bottom - h1Box.top) * 10) / 10 : null,
+        vh45px: Math.round(window.innerHeight * 0.45 * 10) / 10,
+      });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (heroGridRef.current) ro.observe(heroGridRef.current);
+    window.addEventListener("orientationchange", measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("orientationchange", measure);
+      window.removeEventListener("resize", measure);
+    };
+    // #endregion
+  }, []);
+
   return (
     <main className="min-w-0 flex-1">
       <section aria-labelledby="hero-heading">
-        <div className="grid min-h-0 grid-cols-1 md:grid-cols-2 md:min-h-[70vh]">
+        <div ref={heroGridRef} className="grid min-h-0 grid-cols-1 md:grid-cols-2 md:min-h-[70vh]">
           <div className="relative order-1 min-h-[45vh] md:order-2 md:min-h-full md:border-l-[6px] md:border-white">
             <div className="absolute inset-0 overflow-hidden">
               <img
@@ -304,8 +379,8 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="order-2 flex h-full min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 [container-type:size] sm:px-3 md:order-1 md:min-h-[70vh] md:px-5 lg:px-12">
-            <div className="hero-copy pb-[12.5cqh]">
+          <div className="order-2 flex min-h-[45vh] flex-col justify-end bg-black px-[var(--page-gutter-mobile)] pt-0 sm:px-3 md:order-1 md:h-full md:min-h-[70vh] md:[container-type:size] md:px-5 lg:px-12">
+            <div className="hero-copy max-md:pt-6 pb-9 md:pb-[12.5cqh]">
               <h1 id="hero-heading" className="hero-heading text-left">
                 We treat your dirt
                 <span className="sm:hidden"> </span>
@@ -340,7 +415,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:px-3 md:px-5 lg:px-[30px]">
+        <div className="relative z-10 mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:pl-[calc(var(--section-heading-shift)+2rem)] sm:pr-3 md:pr-5 lg:pr-[30px]">
           <div className="flex flex-col gap-8 sm:gap-10 lg:grid lg:grid-cols-2 lg:gap-x-0 lg:gap-y-8 lg:items-stretch xl:gap-y-[calc(theme(spacing.14)*2/3)]">
             <div>
               <h2
@@ -353,13 +428,13 @@ export default function Home() {
             <div className="hidden min-h-0 lg:block" aria-hidden />
             <ul className="m-0 flex list-none flex-col gap-8 p-0 sm:gap-[calc(theme(spacing.14)*2/3)] lg:contents">
               {servicesItems.map(({ title, description, Icon }) => (
-                <li key={title} className="flex gap-6 sm:gap-8 lg:contents">
-                  <div className="hidden h-full min-h-0 shrink-0 justify-start self-stretch sm:flex lg:justify-end">
+                <li key={title} className="flex items-start gap-6 sm:gap-8 lg:contents">
+                  <div className="hidden min-h-0 shrink-0 justify-start self-start sm:flex lg:self-start lg:justify-end">
                     <div
-                      className="flex aspect-square h-full min-h-16 w-auto shrink-0 items-center justify-center rounded-lg border-2 border-stone-950 text-stone-950 sm:min-h-[4.5rem]"
+                      className="flex h-[5.625rem] w-[5.625rem] shrink-0 items-center justify-center rounded-lg border-2 border-stone-950 text-stone-950"
                       aria-hidden
                     >
-                      <Icon className="h-10 w-10 sm:h-11 sm:w-11" strokeWidth={1.75} aria-hidden />
+                      <Icon className="h-[3.4375rem] w-[3.4375rem]" strokeWidth={1.5} aria-hidden />
                     </div>
                   </div>
                   <div className="min-w-0 lg:pl-6 xl:pl-8">
@@ -399,8 +474,8 @@ export default function Home() {
         className="scroll-mt-20 bg-white pb-16 pt-18 text-stone-950 sm:pb-24 sm:pt-24 md:pb-28 md:pt-27"
         aria-labelledby="about-heading"
       >
-        <div className="mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:px-3 md:px-5 lg:px-[30px]">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-12 xl:gap-16">
+        <div className="mx-auto max-w-7xl px-[var(--page-gutter-mobile)] sm:pl-[calc(var(--section-heading-shift)+2rem)] sm:pr-3 md:pr-5 lg:pr-[30px]">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:items-center sm:gap-8 lg:gap-12 xl:gap-16">
             <div className="relative order-1 min-h-0">
               <h2
                 id="about-heading"
