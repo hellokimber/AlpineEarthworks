@@ -44,7 +44,7 @@
 
 .hero-subheading {
   margin-top: 1.44em;
-  font-size: var(--hero-sub-size);
+  font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.35;
   letter-spacing: 0.14em;
@@ -52,9 +52,9 @@
   color: #fff;
 }
 
-/* Gap above CTA below subheading; scales with sub size (3.6× = prior 3× +20%) */
+/* Gap above CTA below subheading; mobile 2.4x sub size, sm+ 3.6x */
 .hero-cta {
-  margin-top: calc(3.6 * var(--hero-sub-size));
+  margin-top: calc(2.4 * var(--hero-sub-size));
   display: flex;
   width: 100%;
   align-items: center;
@@ -75,7 +75,12 @@
 }
 
 @media (min-width: 640px) {
+  .hero-subheading {
+    font-size: var(--hero-sub-size);
+  }
+
   .hero-cta {
+    margin-top: calc(3.6 * var(--hero-sub-size));
     width: auto;
     align-self: flex-start;
     padding: 0.65em 1.5em;

@@ -74,7 +74,7 @@ export default function Header() {
         className={`border-t border-stone-200 bg-white md:hidden ${menuOpen ? "block" : "hidden"}`}
       >
         <nav
-          className="flex flex-col gap-1 py-4 pl-[var(--page-gutter-mobile)] pr-1 sm:pl-6 sm:pr-2 md:pr-4 lg:pr-7"
+          className="flex flex-col gap-1 py-4 px-[var(--page-gutter-mobile)] sm:px-6"
           aria-label="Mobile"
         >
           {navLinks.map(({ to, label }) => (
