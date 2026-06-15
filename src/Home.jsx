@@ -369,7 +369,7 @@ export default function Home() {
             </div>
             <div className="hero-exp-badge absolute z-10 inline-flex aspect-square w-fit max-w-[min(100%,calc(100%-2rem))] flex-col items-center justify-center gap-[3px] p-[15px] sm:gap-1 bottom-[var(--page-gutter-mobile)] right-[var(--page-gutter-mobile)] sm:bottom-3 sm:right-3 md:bottom-5 md:right-5 lg:bottom-[30px] lg:right-[30px]">
               <p className="font-[family-name:var(--font-display)] text-4xl font-black leading-none text-black sm:text-5xl">
-                35+
+                15+
               </p>
               <p className="w-full text-left text-[0.625rem] font-semibold uppercase leading-[1.2] tracking-[0.06em] text-black sm:text-[0.6875rem] sm:tracking-[0.08em]">
                 Years of
@@ -497,7 +497,7 @@ export default function Home() {
                 We are a small, local crew based right here in the Alberta Foothills.
               </p>
               <p className="mt-4 text-base leading-relaxed text-stone-700 sm:text-lg sm:leading-[1.35] md:text-xl md:leading-[1.3]">
-                As a family-run company with over 35 years of combined experience, we believe in honest work,
+                As a family-run company with over 15 years of combined experience, we believe in honest work,
                 clear communication, and building real relationships with our clients. We show up on time, work
                 hard, and take pride in doing the job right: no shortcuts, no surprises.
               </p>
